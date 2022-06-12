@@ -357,7 +357,8 @@ APPEND ~interdia.2da~ ~D#Sbansh   D#Sbansh~ UNLESS ~D#Sbansh~ UNLESS ~25FILE~
 
 // ToB based game
 // --------------
-APPEND ~pdialog.2da~  ~D#Silver   D#SILVP    D#SILVER~ UNLESS ~D#Silver~ IF ~25POST~
+APPEND ~pdialog.2da~  ~D#Silver   D#SILVP    D#SILVER    D#SILVER    D#SI25P    D#SILVER    D#SILVER    D#SILVER~ UNLESS ~D#Silver~ IF ~25POST~
+// It was identical to line 352, missing in particular D#SI25P
 APPEND ~interdia.2da~ ~D#Silver   BSILVER    D#SILVER~ UNLESS ~D#Silver~ IF ~25FILE~
 
 APPEND ~pdialog.2da~  ~D#Sbansh   D#SbansP   D#Sbansh   D#Sbansh   D#SbansP   D#Sbansh   D#Sbansh   D#Sbansh~ UNLESS ~D#Sbansh~ IF ~25POST~
