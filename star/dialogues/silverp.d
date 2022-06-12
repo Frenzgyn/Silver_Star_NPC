@@ -103,11 +103,19 @@ IF ~Global("SilverJoined","LOCALS",1)~ TOBKickOut
   IF ~~ REPLY @3 GOTO TOBWhere
 END
 
-IF ~~ TOBWhere
+IF ~~ THEN BEGIN TOBWhere
   SAY @4
-  IF ~~ REPLY @11 DO ~SetGlobal("SilverJoined","LOCALS",0)
-    EscapeAreaMove("AR4500",1999,1218,0)~ EXIT
-  IF ~~ REPLY @6 DO ~SetGlobal("SilverJoined","LOCALS",0)~ EXIT
+IF ~AreaCheck("AR4500")~ // If in Pocket Plane she could just wait there and will move to the side
+THEN REPLY @6 DO ~SetGlobal("SilverJoined","LOCALS",0) MoveToPointNoInterrupt([2599.1344]) Face(0)~ EXIT 
+
+IF ~!AreaCheck("AR4500")~  // If not in Pocket Plane, she could be teleported there or wait on the spot
+  THEN REPLY @11 DO ~SetGlobal("SilverJoined","LOCALS",0)
+    CreateVisualEffectObject("spdimndr",Myself)
+    Wait(2)
+    MoveBetweenAreas("AR4500",[1999.1318],0)~ EXIT
+    
+IF ~!AreaCheck("AR4500")~ 	
+  THEN REPLY @6 DO ~SetGlobal("SilverJoined","LOCALS",0)~ EXIT
 END
 
 IF ~Global("SilverJoined","LOCALS",0)~ THEN BEGIN TOBRejoin
